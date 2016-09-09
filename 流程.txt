@@ -1,0 +1,56 @@
+准备工作：
+百度搜索"git for windows"，
+去官网下载Git客户端。
+
+1.安装Git，按默认选项“下一步”即可。
+  完成后，双击打开“Git Bash”，
+  出现一个命令行窗口，说明安装成功。
+
+	练习：
+	用“cd 路径”，切换目录，如：
+	cd e:   切换到E盘
+	ls		  罗列当前目录下的文件/文件夹
+	cd 文件夹名称	    进入该文件夹
+
+2.运行 git init
+  生成.git隐藏文件夹
+
+3.创建 SSH Key
+
+	在用户主目录下（如 C:\Users\你的用户名），
+	看看有没有.ssh 目录，
+	如果有，看看该目录下有没有id_rsa 和id_rsa.pub，
+	如果有，可直接跳到下一步。
+	如果没有，运行：
+	$ ssh-keygen -t rsa -C "你的邮箱"
+	然后一路回车，使用默认值即可。
+	如果顺利，可以在用户主目录里找到.ssh 目录，
+	里面有id_rsa 和id_rsa.pub 两个文件，
+	它们是SSH Key 的秘钥对，
+	id_rsa 是私钥，id_rsa.pub 是公钥。
+	
+	登陆GitHub，右上角点击头像，
+	选择Settings - SSH and GPG keys，
+	然后点“New SSH key”，	填上任意Title，
+	在Key文本框里粘贴id_rsa.pub 文件的内容，
+	点“Add Key”，之后可看到已添加的Key。
+
+4.在GitHub 创建一个空仓库（取名随意），
+  在空仓库的页面上找到并复制这行代码：
+	git remote add origin git@github.com:xxx/xxx.git
+	在Git 命令行窗口运行它
+
+5.为了防止提交内容后，小方块不变绿
+ （绿块多，表示提交代码越频繁），
+  配置邮箱和名字，分别运行：
+	git config user.email "你的邮箱
+	git config user.name "你的名字"
+
+6.运行git status  查看状态
+
+5.运行git add .   添加所有
+
+6.运行git commit -m "版本描述"
+
+7.运行git push -u origin master   推送到远程仓库
+	第一次推送，需要加“-u”，以后不用。
